@@ -2,8 +2,8 @@
 #include <cairo.h>
 #include <math.h>
 
-#define WIDTH 900
-#define HEIGHT 600
+#define WIDTH r.width
+#define HEIGHT r.height
 
 static gboolean delete_event( GtkWidget *widget,
                               GdkEvent *event,
@@ -48,10 +48,10 @@ int main(int argc, char *argv[]) {
             gdk_display_get_default(), 0), &r);
 
     gtk_window_set_resizable(GTK_WINDOW (window), FALSE);
-    gtk_window_set_default_size(GTK_WINDOW (window), r.width, r.height);
-    // gtk_window_move(GTK_WINDOW (window),
-    //                 (r.width / 2 - WIDTH / 2),
-    //                 (r.height / 2 - HEIGHT / 2));
+    gtk_window_set_default_size(GTK_WINDOW (window), WIDTH, HEIGHT);
+    gtk_window_move(GTK_WINDOW (window),
+        (r.width / 2 - WIDTH / 2),
+        (r.height / 2 - HEIGHT / 2));
     gtk_window_set_title(GTK_WINDOW (window), "Pixel v0.1.0");
     gtk_window_set_icon_from_file(GTK_WINDOW (window), "../res/icon.png", NULL);
 
